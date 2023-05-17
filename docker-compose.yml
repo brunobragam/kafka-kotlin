@@ -74,7 +74,6 @@ services:
     image: tchiotludo/akhq
     depends_on:
       - broker
-      - connect
     links:
       - broker
     ports:
