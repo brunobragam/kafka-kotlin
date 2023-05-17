@@ -5,6 +5,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.0"
 	kotlin("jvm") version "1.7.22"
 	kotlin("plugin.spring") version "1.7.22"
+	kotlin("plugin.serialization") version "1.4.21" // <-- (1)
 }
 
 group = "com.example"
@@ -21,6 +22,10 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	// https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka
+	implementation("org.springframework.kafka:spring-kafka:3.0.7")
+
 }
 
 tasks.withType<KotlinCompile> {
