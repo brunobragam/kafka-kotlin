@@ -26,6 +26,18 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka
 	implementation("org.springframework.kafka:spring-kafka:3.0.7")
 
+	// https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams
+	implementation("org.apache.kafka:kafka-streams:3.4.0")
+
+	// https://mvnrepository.com/artifact/org.apache.avro/avro
+	implementation("org.apache.avro:avro:1.11.1")
+
+	// https://mvnrepository.com/artifact/io.confluent/kafka-avro-serializer
+	implementation("io.confluent:kafka-avro-serializer:5.3.0")
+
+	// https://mvnrepository.com/artifact/io.confluent/kafka-streams-avro-serde
+	implementation("io.confluent:kafka-streams-avro-serde:7.3.3")
+
 }
 
 tasks.withType<KotlinCompile> {
@@ -38,3 +50,8 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+
+
+java.sourceSets["main"].java.srcDir("$buildDir/generated-main-avro-java")
+java.sourceSets["test"].java.srcDir("$buildDir/generated-test-avro-java")

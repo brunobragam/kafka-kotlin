@@ -8,9 +8,9 @@ import org.springframework.kafka.core.KafkaAdmin
 
 
 @EnableKafka
-
 @Configuration
-class KafkaProducerConfig {
+class KafkaConfiguration {
+
     // TOPICS
     val quotesTopic = "stock-quotes-topic"
     val leveragePriceTopic = "leverage-prices-topic"
