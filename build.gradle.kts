@@ -6,6 +6,7 @@ plugins {
 	kotlin("jvm") version "1.7.22"
 	kotlin("plugin.spring") version "1.7.22"
 	kotlin("plugin.serialization") version "1.4.21" // <-- (1)
+	id("com.github.davidmc24.gradle.plugin.avro") version "1.5.0"
 }
 
 group = "com.example"
@@ -14,7 +15,7 @@ java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
 	mavenCentral()
-}
+	maven("https://packages.confluent.io/maven/")}
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
@@ -38,6 +39,7 @@ dependencies {
 	// https://mvnrepository.com/artifact/io.confluent/kafka-streams-avro-serde
 	implementation("io.confluent:kafka-streams-avro-serde:7.3.3")
 
+
 }
 
 tasks.withType<KotlinCompile> {
@@ -51,7 +53,7 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-
-
-java.sourceSets["main"].java.srcDir("$buildDir/generated-main-avro-java")
-java.sourceSets["test"].java.srcDir("$buildDir/generated-test-avro-java")
+tasks
+	.withType<com.github.davidmc24.gradle.plugin.avro.GenerateAvroJavaTask> {
+	setOutputDir(file("$buildDir/generated-main-avro-java"))
+}

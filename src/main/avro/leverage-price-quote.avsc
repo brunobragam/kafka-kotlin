@@ -1,9 +1,0 @@
-{
-  "namespace": "com.maia.springkafkastreamkotlin.repository",
-  "type": "record",
-  "name": "LeveragePrice",
-  "fields": [
-    { "name": "symbol", "type": "string"},
-    { "name": "leverage", "type": "double"}
-  ]
-}

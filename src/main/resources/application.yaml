@@ -1,3 +1,9 @@
 spring:
   kafka:
     bootstrap-servers: 192.168.0.103:9092
+    producer:
+      bootstrap-servers: 192.168.0.103:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      properties:
+        schema.registry.url: http://192.168.0.103:8081

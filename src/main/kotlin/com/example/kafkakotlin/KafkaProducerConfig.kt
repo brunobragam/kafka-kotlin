@@ -4,23 +4,19 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.kafka.annotation.EnableKafka
 import org.springframework.kafka.config.TopicBuilder
-import org.springframework.kafka.core.KafkaAdmin
+import org.springframework.kafka.core.KafkaAdmin.NewTopics
 
 
 @EnableKafka
 @Configuration
 class KafkaConfiguration {
-
-    // TOPICS
-    val quotesTopic = "stock-quotes-topic"
-    val leveragePriceTopic = "leverage-prices-topic"
-
     @Bean
-    fun appTopics(): KafkaAdmin.NewTopics? {
-        return KafkaAdmin.NewTopics(
-            TopicBuilder.name(quotesTopic).build(),
-            TopicBuilder.name(leveragePriceTopic)
-                .compact().build(),
+    fun appTopics(): NewTopics? {
+        return NewTopics(
+            TopicBuilder.name(USER_REGISTRATION).compact().build(),
         )
     }
 }
+
+// constants for topics
+const val USER_REGISTRATION = "user-registration"
